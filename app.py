@@ -4,12 +4,20 @@ import torch
 import numpy as np
 import pandas as pd
 from flask import Flask, request, jsonify, render_template
-from flask_cors import CORS
+try:
+    from flask_cors import CORS
+except ModuleNotFoundError:
+    def CORS(app):
+        return app
 import joblib
 import warnings
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(BASE_DIR)
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8")
 
 from src.network import BuildingLoadModel
 from utils.data_utils import FEATURE_COLS, TARGET_COLS
@@ -184,4 +192,4 @@ if __name__ == '__main__':
     print("访问地址: http://localhost:5000")
     print("按 Ctrl+C 停止服务器")
     print("=" * 50)
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=True, use_reloader=False, host='0.0.0.0', port=5000)
