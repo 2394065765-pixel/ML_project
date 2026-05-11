@@ -1,0 +1,17 @@
+pandas
+numpy
+torch
+scikit-learn
+openpyxl
+joblib
+matplotlib
+
+
+torch
+numpy
+pandas
+scikit-learn
+flask
+flask-cors
+joblib
+openpyxl
