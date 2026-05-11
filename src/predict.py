@@ -112,7 +112,6 @@ if __name__ == "__main__":
     }
 
     result = predict_single(sample)
-    result = predict_single(sample)
 
     print("========== 输入样本 ==========")
     for k, v in sample.items():
